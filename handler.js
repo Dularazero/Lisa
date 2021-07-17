@@ -241,7 +241,7 @@ module.exports = handle = (client, Client) => {
 			Client.reply(data.from, "Waktu habis", send)
 			Client.reply(data.from,`Jawabannya adalah: ${getSoal.data.result.jawaban}`, send)
 			global.tebakgambar[data.from] = {}
-			
+
         })
         Client.cmd.on('clearall', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
@@ -385,7 +385,7 @@ module.exports = handle = (client, Client) => {
                               "rowId": `${data.prefix}${data.command} off`
                            }
                         ]
-                     }]}}, {}) 
+                     }]}}, {})
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
@@ -418,8 +418,8 @@ module.exports = handle = (client, Client) => {
                   "description": `*Result for : ${data.body}*\n*Download video by click button bellow*`,
                   "buttonText": "Result",
                   "listType": "SINGLE_SELECT",
-                  "sections": secs}}, {}) 
-            client.relayWAMessage(po, {waitForAck: true})	
+                  "sections": secs}}, {})
+            client.relayWAMessage(po, {waitForAck: true})
 			})
         })
         Client.cmd.on('leave', (data) => {
@@ -455,7 +455,7 @@ module.exports = handle = (client, Client) => {
                               "rowId": `${data.prefix}${data.command} off`
                            }
                         ]
-                     }]}}, {}) 
+                     }]}}, {})
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
@@ -492,7 +492,7 @@ module.exports = handle = (client, Client) => {
                               "rowId": `${data.prefix}${data.command} off`
                            }
                         ]
-                     }]}}, {}) 
+                     }]}}, {})
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
@@ -532,7 +532,7 @@ module.exports = handle = (client, Client) => {
                               "rowId": `${data.prefix}${data.command} close`
                            }
                         ]
-                     }]}}, {}) 
+                     }]}}, {})
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
@@ -971,7 +971,7 @@ module.exports = handle = (client, Client) => {
                     } catch {
                         data.reply(`Maaf wiki ${data.body} tidak ditemukan`)
                     }
-                    break	
+                    break
                 case 'kbbi':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -1045,29 +1045,29 @@ module.exports = handle = (client, Client) => {
                         }
                         await Client.sendFileFromUrl(from, ttt[0].video.thumbnail_src, 'axis.jpg', teks, message)
                     } catch(e) {
-                        data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
+                        data.reply(`Sorry Search ${data.body} not found`)
                     }
                     break
                 case 'ytplaylist':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}ytplaylist[ channel ]*\nContoh : ${data.prefix}ytplaylist jessnolimit`)
+                        if(data.body == "") return data.reply(`Send orders *${data.prefix}ytplaylist[ channel ]*\nContoh : ${data.prefix}ytplaylist jessnolimit`)
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/ytplaylist?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
-                        var tekss = `*「 YOUTUBE PLAYLIST 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        var tekss = `*「 YOUTUBE PLAYLIST 」*\n\n*Search result : ${data.body}*\n\n`
                         for(let i = 0; i < ttt.length; i++) {
-                            tekss += `*Nama* : ${ttt[i].title}\n*Jumlah video*: ${ttt[i].video_count}\n*Channel*: ${ttt[i].uploader.username}\n*Link*: ${ttt[i].url}\n\n`
+                            tekss += `*Nama* : ${ttt[i].title}\n*Number of videos*: ${ttt[i].video_count}\n*Channel*: ${ttt[i].uploader.username}\n*Link*: ${ttt[i].url}\n\n`
                         }
                         await Client.sendFileFromUrl(from, ttt[0].thumbnail, 'axis.jpg', tekss, message)
                     } catch(e) {
-                        data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
+                        data.reply(`Sorry Search ${data.body} not found`)
                     }
                     break
                 case 'ytchannel':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}ytchannel [ channel ]*\nContoh : ${data.prefix}ytchannel jessnolimit`)
+                        if(data.body == "") return data.reply(`Send orders *${data.prefix}ytchannel [ channel ]*\nContoh : ${data.prefix}ytchannel jessnolimit`)
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/ytchannel?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
@@ -1089,11 +1089,11 @@ module.exports = handle = (client, Client) => {
                         ttt = res.data.data
                         var teks = `*「 SHOPEE 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
                         for(let i = 0; i < ttt.length; i++) {
-                            teks += `*Nama* : ${ttt[i].name}\n*Harga*: ${ttt[i].harga}\n*Terjual* : ${ttt[i].terjual}\n*Lokasi*: ${ttt[i].location}\n*Deskripsi*: ${ttt[i].desc}\n*Stok*: ${ttt[i].stock}\n*Informasi*: ${ttt[i].information}\n*Link*: ${ttt[i].url}\n\n`
+                            teks += `*Nama* : ${ttt[i].name}\n*Harga*: ${ttt[i].harga}\n*Terjual* : ${ttt[i].terjual}\n*Lokasi*: ${ttt[i].location}\n*Description*: ${ttt[i].desc}\n*Stok*: ${ttt[i].stock}\n*Informasi*: ${ttt[i].information}\n*Link*: ${ttt[i].url}\n\n`
                         }
                         await Client.sendFileFromUrl(from, ttt[0].img_detail[0], 'p.jpg', teks, message)
                     } catch {
-                        data.reply(`Maaf produk ${data.body} tidak ditemukan`)
+                        data.reply(`Sorry product ${data.body} not found`)
                     }
                     break
                 case 'igstalk':
@@ -1103,18 +1103,18 @@ module.exports = handle = (client, Client) => {
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/igstalk?apikey=${configs.zeksKey}&username=${data.body}`)
                         pe = res.data
-                        tek = `*「 INSTAGRAM PROFILE 」*	
-					
+                        tek = `*「 INSTAGRAM PROFILE 」*
+
 *Username:* @${pe.username}
 *Name:* ${pe.fullname}
 *Followers:* ${pe.follower}
-*Follow.*: ${pe.following}
+*Follow:* ${pe.following}
 *Description:* ${pe.bio}
 *Link:* https://instagram.com/${pe.username}
 `
                         Client.sendFileFromUrl(from, pe.profile_pic, 'p.jpg', tek, message)
                     } catch {
-                        data.reply(`Maaf username ${data.body} tidak ditemukan`)
+                        data.reply(`Sorry Username ${data.body} not found`)
                     }
                     break
                 case 'brainly':
@@ -1329,7 +1329,7 @@ module.exports = handle = (client, Client) => {
                     break
 		        case 'term':
                     if(!data.isOwner) return data.reply(mess.ownerOnly)
-					exec(data.body, (err, stdout) => {	
+					exec(data.body, (err, stdout) => {
 				    if (err) return data.reply(err.toString())
 					if (stdout) return data.reply(stdout)
 					})
@@ -1374,9 +1374,9 @@ module.exports = handle = (client, Client) => {
                 t
             } = datas
             //console.log(`ID STICKER: ${idStick}`) //digunakan untuk mendapatkan id sticker
-            /*	Cara bikin stickercmd 
+            /*	Cara bikin stickercmd
                 -ambil id sticker lewat console.log
-            	-id sticker nya dibuat case 
+            	-id sticker nya dibuat case
                 -case 'idnya': contoh ada dibawah
             	*/
             switch(idStick) {
@@ -1387,7 +1387,7 @@ module.exports = handle = (client, Client) => {
                     if(datas.isQuotedImage || datas.isQuotedVideo) {
                         const getBuffs = await client.downloadMediaMessage(JSON.parse(JSON.stringify(datas.message.message.stickerMessage.contextInfo).replace('quotedMessage', 'message')))
 					if(isQuotedVideo) Client.sendMp4AsSticker(from, getBuffs.toString('base64'), message, { pack: `${configs.pack}`, author: `${configs.author}` })
-                   	else Client.sendImageAsSticker(from, getBuffs.toString('base64'), message, {  pack: `${configs.pack}`, author: `${configs.author}` })    
+                   	else Client.sendImageAsSticker(from, getBuffs.toString('base64'), message, {  pack: `${configs.pack}`, author: `${configs.author}` })
                     }
                     break
 			    case '1.4129505721465047e+123':
