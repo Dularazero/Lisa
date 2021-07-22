@@ -632,7 +632,7 @@ module.exports = handle = (client, Client) => {
                     },
                     data: bodyForm.getBuffer()
                 })
-                Client.sendFileFromBase64(data.from, getAxios.data.toString('base64'), 'missing.jpg', '*Image created successfully!* ', data.message)
+                Client.sendFileFromBase64(data.from, getAxios.data.toString('base64'), 'missing.jpg', '*Image created successfully!.* ', data.message)
             } else if(data.mentionedJidList.length > 0) {
                 text = data.body.split('|')
                 ppUrl = await client.getProfilePicture(data.mentionedJidList[0])
