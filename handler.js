@@ -501,7 +501,7 @@ module.exports = handle = (client, Client) => {
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             if(!data.isAdmin) return data.reply(mess.admin)
             client.revokeInvite(data.from)
-            data.reply(`Linkgroup berhasil di reset oleh admin @${data.sender.split('@')[0]}`)
+            data.reply(`「❗️」The linkgroup has been successfully reset by admin @${data.sender.split('@')[0]}`)
         })
         Client.cmd.on('group', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
@@ -509,10 +509,10 @@ module.exports = handle = (client, Client) => {
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             if(data.args[0] && data.args[0].toLowerCase() == 'open') {
                 client.groupSettingChange(data.from, GroupSettingChange.messageSend, false)
-                data.reply(`Group telah dibuka oleh admin @${data.sender.split('@')[0]}`)
+                data.reply(`「❗️」The group has been opened by admin @${data.sender.split('@')[0]}`)
             } else if(data.args[0] && data.args[0].toLowerCase() == 'close') {
                 client.groupSettingChange(data.from, GroupSettingChange.messageSend, true)
-                data.reply(`Group telah ditutup oleh admin @${data.sender.split('@')[0]}`)
+                data.reply(`「❗️」The group has been closed by admin @${data.sender.split('@')[0]}`)
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
@@ -987,7 +987,7 @@ module.exports = handle = (client, Client) => {
                 case 'film':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}film [ film ]*\nContoh : ${data.prefix}film doraemon`)
+                        if(data.body == "") return data.reply(`Send orders *${data.prefix}film [ film ]*\nContoh : ${data.prefix}film doraemon`)
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/film?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
@@ -997,7 +997,7 @@ module.exports = handle = (client, Client) => {
                         }
                         await Client.sendFileFromUrl(from, ttt[0].thumb, 'p.jpg', teks, message)
                     } catch {
-                        data.reply(`Maaf film ${data.body} tidak ditemukan`)
+                        data.reply(`Sorry movie ${data.body} not found`)
                     }
                     break
                 case 'happymod':
@@ -1007,13 +1007,13 @@ module.exports = handle = (client, Client) => {
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/happymod?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
-                        var teks = `*「 HAPPYMOD 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        var teks = `*「 HAPPYMOD 」*\n\n*Search result: ${data.body}*\n\n`
                         for(let i = 0; i < ttt.length; i++) {
                             teks += `*Title* : ${ttt[i].title}\n*Rate*: ${ttt[i].rating}\n*Link*: ${ttt[i].url}\n\n`
                         }
                         await Client.sendFileFromUrl(from, ttt[0].thumb, 'p.jpg', teks, message)
                     } catch {
-                        data.reply(`Maaf aplikasi MOD ${data.body} tidak ditemukan`)
+                        data.reply(`Sorry MOD app ${data.body} not found`)
                     }
                     break
                 case 'iguser':
@@ -1077,7 +1077,7 @@ module.exports = handle = (client, Client) => {
                         }
                         await Client.sendFileFromUrl(from, ttt[0].thumbnail, 'axis.jpg', eks, message)
                     } catch(e) {
-                        data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
+                        data.reply(`Sorry search ${data.body} not found`)
                     }
                     break
                 case 'shopee':
@@ -1127,7 +1127,7 @@ module.exports = handle = (client, Client) => {
                             await Client.reply(from, `Pertanyaan : ${res.data.data[i].question}\n\nJawaban : ${res.data.data[i].answer[0].text}`, message)
                         }
                     } catch {
-                        data.reply(`Maaf jawaban tidak ditemukan`)
+                        data.reply(`Sorry, no answer found`)
                     }
                     break
                 case 'spotify':
@@ -1184,7 +1184,7 @@ module.exports = handle = (client, Client) => {
                 case 'wallpaper':
 				    try{
                     if(isLimit(data.sender)) return data.reply(mess.limit)
-                    if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}wallpaper [ query ]*\nContoh : ${data.prefix}wallpaper kucing`)
+                    if(data.body == "") return data.reply(`Send orders *${data.prefix}wallpaper [ query ]*\nContoh : ${data.prefix}wallpaper kucing`)
                     data.reply(mess.wait)
                     res = await axios.get(`${configs.apiUrl}/api/unsplash?apikey=${configs.zeksKey}&q=${data.body}`)
                     if(res.data.status == false) data.reply(res.data.message)
@@ -1395,14 +1395,14 @@ module.exports = handle = (client, Client) => {
                     if(!datas.isAdmin) return datas.reply(mess.admin)
                     if(!datas.botIsAdmin) return datas.reply(mess.botAdmin)
                     client.groupSettingChange(from, GroupSettingChange.messageSend, false)
-                    datas.reply(`Group telah dibuka oleh admin @${datas.sender.split('@')[0]}`)
+                    datas.reply(`「❗️」The group has been opened by adminn @${datas.sender.split('@')[0]}`)
 				    break
 			    case '1.3049292658533466e+123':
 				    if(!datas.isGroup) return datas.reply(mess.group)
                     if(!datas.isAdmin) return datas.reply(mess.admin)
                     if(!datas.botIsAdmin) return datas.reply(mess.botAdmin)
                     client.groupSettingChange(from, GroupSettingChange.messageSend, true)
-                    datas.reply(`Group telah ditutup oleh admin @${datas.sender.split('@')[0]}`)
+                    datas.reply(`「❗️」The group has been closed by admin @${datas.sender.split('@')[0]}`)
 				    break
             }
         })
