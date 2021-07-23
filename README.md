@@ -1,5 +1,5 @@
 <div align="center">
-<img alt="GitHub" src="https://img.shields.io/badge/WHATSAPP%20BOT-25D32?style=for-the-badge&logoColor=darkgreen"/>
+<img alt="GitHub" src="https://img.shields.io/badge/LISA%20BOT-25D32?style=for-the-badge&logoColor=darkgreen"/>
 <br><br>
   
 > A Lisa bot made using adiwajshing/Baileys library
