@@ -22,7 +22,7 @@
 
 ```bash
 > git clone https://github.com/Dularazero/Lisa
-> cd whatsapp-bot
+> cd Lisa
 > npm i
 ```
 ### For termux users before running the above command write this command
