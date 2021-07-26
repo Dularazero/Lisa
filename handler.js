@@ -74,7 +74,7 @@ module.exports = handle = (client, Client) => {
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
                 teks = `*Data successfully obtained!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size}\n*Quality* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Please wait for the media file to be sent it may take a few minutes_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_For the duration of more than the limit is presented in the form of a link_`, data.message)
+                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Successfully Obtained!*\n\n*Title* : ${ytm.title}\n*Size* : ${ytm.size}\n*Quality* : ${ytm.quality}\n*Ext* : mp3\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_For the duration of more than the limit is presented in the form of a link_`, data.message)
                 Client.sendFileFromUrl(data.from, ytm.thumb, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, ytm.link, `${ytm.title} - Download.mp3`, ``, data.message)
             } catch {
@@ -169,10 +169,10 @@ module.exports = handle = (client, Client) => {
         })
         Client.cmd.on('limit', async (data) => {
             const dataUser = JSON.parse(fs.readFileSync('./lib/json/dataUser.json'))
-            if(dataUser[data.sender].premium) return data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\nAnda adalah user premium yang memiliki akses tanpa batas limit!`)
+            if(dataUser[data.sender].premium) return data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\nYou are a premium user who has unlimited access!`)
             limits = configs.maxLimit - dataUser[data.sender].limit
             if(limits <= 0) return data.reply("```" + `Limit anda sudah habis` + "```")
-            data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\n Limit anda tersisa ${limits || 30}\nLimit setiap hari di reset jam 00.00\nJika anda ingin mendapatkan unlimited limit silahkan chat owner bot ketik !owner`)
+            data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\n Your Linmy is left ${limits || 30}\nThe daily limit is reset hours 00.00\nIf you want to get unlimited limit, please chat with the bot owner, type /owner`)
         })
         Client.cmd.on('info', async (data) => {
 		data.reply(ingfo)
@@ -391,7 +391,7 @@ module.exports = handle = (client, Client) => {
         })
 	    Client.cmd.on('youtubedl', async (data) =>{
             if(isLimit(data.sender)) return data.reply(mess.limit)
-            if(data.body == "") return data.reply(`Send orders *${data.prefix}youtubedl [ query ]*\nContoh : ${data.prefix}youtubedl Alan walker`)
+            if(data.body == "") return data.reply(`Send orders *${data.prefix}youtubedl [ query ]*\nExample : ${data.prefix}youtubedl Alan walker`)
             data.reply(mess.wait)
 			axios.get(`${configs.apiUrl}/api/yts?apikey=${configs.zeksKey}&q=${data.body}`).then((xres) =>{
 			if (!xres.data.status || !xres.data.result) return data.reply(xres.data.message)
