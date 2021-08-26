@@ -462,6 +462,7 @@ module.exports = handle = (client, Client) => {
 		Client.cmd.on('antilink', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
+            if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
                 if(dataGc[data.from].antilink) return data.reply('Already on!')
@@ -476,7 +477,7 @@ module.exports = handle = (client, Client) => {
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*LISA-BOT*",
+                  "title": "*WHATSAPP-BOT*",
                   "description": "pilh on/off",
                   "buttonText": "COMMANDS",
                   "listType": "SINGLE_SELECT",
@@ -492,7 +493,7 @@ module.exports = handle = (client, Client) => {
                               "rowId": `${data.prefix}${data.command} off`
                            }
                         ]
-                     }]}}, {})
+                     }]}}, {}) 
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
