@@ -25,6 +25,9 @@
 > cd Lisa
 > npm i
 ```
+### Deploy
+https://heroku.com/deploy
+
 ### For termux users before running the above command write this command
 ```bash
 > apt-get update
